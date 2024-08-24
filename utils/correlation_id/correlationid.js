@@ -25,7 +25,6 @@ const CorrelationId = FastifyPlugin((fastify, options, done) => {
         } else {
             correlationId = uuid();
             log.debug('Correlation ID is generated: %s', correlationId);
-            console.log(correlationId, 'JW')
         }
 
         if (options.skipResponseHeader !== true) {
