@@ -36,7 +36,25 @@ I made changes to the index.js file by configuring the Fastify server to use the
 
 ## Task 3 - Terminate the idle worker and recreate when needed
 
-To fix the issue of idle worker threads, I implemented a system that terminates any worker thread that has been idle for 15 minutes. The solution involves creating a new worker thread whenever a request is received and keeping track of when each worker was last active. If a worker has been idle for longer than the set timeout, it is terminated to free up resources. Additionally, I added logging to track when workers are created and terminated, ensuring better visibility into the worker thread lifecycle. This approach helps maintain efficiency and prevents unnecessary resource usage.
+
+I’ve developed a system that effectively manages worker threads by creating a new thread for each incoming request and terminating them after 15 minutes of inactivity. I’ve ensured that all thread creation and termination events are logged for tracking. Workers are managed in a Map where I keep track of their last active time, and a cleanup process runs every 15 minutes to remove idle workers. 
+
+
+- A new worker thread is created for every incoming request.
+- Worker threads are terminated if they have been idle for 15 minutes.
+- Worker thread creation and termination events are logged in the console.
+
+Implementation details:
+- Each request triggers the creation of a new worker thread.
+- Workers are tracked in a Map, along with their last active time.
+- A cleanup interval runs every 15 minutes to check for and terminate idle workers.
+- Workers update their last active time after processing each request.
+
+### Files Changed
+
+1. `server.js` (main server file)
+2. `utils/generateNewWorker` 
+3. `README.md` (this file)
 
 ### Files Changed
 

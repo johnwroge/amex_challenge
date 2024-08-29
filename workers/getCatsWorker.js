@@ -7,7 +7,6 @@ const cachedTokensMap = new Map();
 
 const refreshToken = async (data) => {
   try {
-    // 1. changed to data.key from data.value.key
     const refreshedToken = await invokeTokenService(data.key);
     cachedTokensMap.set(data.key, { token:refreshedToken });
   } catch (error) {
