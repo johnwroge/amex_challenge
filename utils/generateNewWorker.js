@@ -3,7 +3,7 @@ const path = require('path');
 const requestTracker = require('./requestTracker');
 
 const workers = new Map();
-const WORKER_IDLE_TIMEOUT = .25 * 60 * 1000; 
+const WORKER_IDLE_TIMEOUT = 15 * 60 * 1000; 
 
 const generateNewWorker = (workerName) => {
   const worker = new Worker(path.join(__dirname, '../workers', `${workerName}.js`));
