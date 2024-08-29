@@ -52,7 +52,7 @@ Implementation details:
 
 ### Files Changed
 
-1. `server.js` (main server file)
+1. `index.js` (main server file)
 2. `utils/generateNewWorker` 
 3. `README.md` (this file)
 
